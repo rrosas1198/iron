@@ -1,9 +1,29 @@
 import { SSHErrorCode } from "../enums/ssh-error-code.enum.ts";
 
+/**
+ * Exception class for SSH errors.
+ * Represents errors returned by SSH operations, mapping SSHErrorCode values to human-readable messages.
+ * Used to handle and propagate SSH protocol errors in the client.
+ * Closely related to libssh2 error codes (LIBSSH2_ERROR_*).
+ */
 export class SSHException extends Error {
+    /**
+     * SSH error code associated with the error.
+     * Corresponds to LIBSSH2_ERROR_* constants in libssh2.
+     */
     readonly #_code: SSHErrorCode;
+    /**
+     * Optional system error number (errno), if available.
+     * Can be used for low-level socket or OS errors.
+     */
     readonly #_errno: number | undefined;
 
+    /**
+     * Constructs a new SSHException.
+     * @param message Human-readable error message.
+     * @param code SSHErrorCode value representing the error type.
+     * @param errno Optional system error number.
+     */
     constructor(message: string, code: SSHErrorCode, errno?: number) {
         super(message);
         this.name = "SSHException";
@@ -11,19 +31,39 @@ export class SSHException extends Error {
         this.#_errno = errno;
     }
 
+    /**
+     * Returns the SSH error code for this exception.
+     * Used to programmatically inspect the error type.
+     */
     get code(): number {
         return this.#_code;
     }
 
+    /**
+     * Returns the system error number, if available.
+     * Useful for diagnosing low-level socket or OS errors.
+     */
     get errno(): number | undefined {
         return this.#_errno;
     }
 
+    /**
+     * Creates an SSHException from an error code, using a default message if none is provided.
+     * @param code SSHErrorCode value.
+     * @param message Optional custom error message.
+     * @returns SSHException instance.
+     */
     static fromCode(code: SSHErrorCode, message?: string): SSHException {
         const message_ = message || SSHException.#_getStatusName(code);
         return new SSHException(message_, code);
     }
 
+    /**
+     * Maps an SSHErrorCode to a human-readable message.
+     * Used internally to provide default error messages for known SSH error codes.
+     * @param code SSHErrorCode value.
+     * @returns String description of the error code.
+     */
     static #_getStatusName(code: SSHErrorCode): string {
         switch (code) {
             case SSHErrorCode.None:
