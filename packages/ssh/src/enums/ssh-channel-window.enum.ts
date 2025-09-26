@@ -10,10 +10,10 @@ export enum SSHChannelWindow {
      * Corresponds to LIBSSH2_CHANNEL_WINDOW_DEFAULT in libssh2.
      * Controls the maximum amount of data buffered for a channel.
      */
-    WindowDefault = 2 * 1024 * 1024, // 2MB
+    WindowDefault = 2 * 1024 * 1024,
     /**
      * Minimum window adjustment (1KB).
      * Used to trigger window size increases in libssh2.
      */
-    MinAdjust = 1024 // 1KB
+    MinAdjust = 1024
 }

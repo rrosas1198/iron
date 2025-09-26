@@ -549,7 +549,7 @@ const LIBSSH2_FFI_SYMBOLS = {
 
 function _findLibraryPath(): string {
     const extension = _inferLibraryExtension();
-    const platform = `${Deno.build.os}-${Deno.build.arch}`;
+    const platform = `${Deno.build.os}_${Deno.build.arch}`;
     return `${import.meta.resolve(`../lib/${platform}/libssh2.${extension}`)}`;
 }
 

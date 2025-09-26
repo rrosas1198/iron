@@ -10,40 +10,40 @@ export enum SFTPPermissionBit {
      * Used to extract the file type from the permissions field.
      * LIBSSH2_SFTP_S_IFMT
      */
-    FileTypeMask = 0o170000, // File type mask
+    FileTypeMask = 0o170000,
     /**
      * FIFO special file.
      * LIBSSH2_SFTP_S_IFIFO
      */
-    Fifo = 0o010000, // FIFO
+    Fifo = 0o010000,
     /**
      * Character special file.
      * LIBSSH2_SFTP_S_IFCHR
      */
-    CharacterSpecial = 0o020000, // Character special
+    CharacterSpecial = 0o020000,
     /**
      * Directory.
      * LIBSSH2_SFTP_S_IFDIR
      */
-    Directory = 0o040000, // Directory
+    Directory = 0o040000,
     /**
      * Block special file.
      * LIBSSH2_SFTP_S_IFBLK
      */
-    BlockSpecial = 0o060000, // Block special
+    BlockSpecial = 0o060000,
     /**
      * Regular file.
      * LIBSSH2_SFTP_S_IFREG
      */
-    RegularFile = 0o100000, // Regular file
+    RegularFile = 0o100000,
     /**
      * Symbolic link.
      * LIBSSH2_SFTP_S_IFLNK
      */
-    SymbolicLink = 0o120000, // Symbolic link
+    SymbolicLink = 0o120000,
     /**
      * Socket file.
      * LIBSSH2_SFTP_S_IFSOCK
      */
-    Socket = 0o140000 // Socket
+    Socket = 0o140000
 }

@@ -20,8 +20,9 @@ export enum SSHHostKeyAlgorithm {
      * DSS algorithm (deprecated).
      * Corresponds to LIBSSH2_HOSTKEY_TYPE_DSS in libssh2.
      * Deprecated due to security concerns.
+     * @deprecated Use RSA or Ed25519 instead.
      */
-    Dss = 2, // deprecated
+    Dss = 2,
     /**
      * ECDSA 256-bit algorithm.
      * Corresponds to LIBSSH2_HOSTKEY_TYPE_ECDSA_256 in libssh2.

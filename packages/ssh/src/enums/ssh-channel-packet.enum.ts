@@ -10,5 +10,5 @@ export enum SSHChannelPacket {
      * Corresponds to LIBSSH2_CHANNEL_PACKET_DEFAULT in libssh2.
      * Controls the maximum size of a single packet sent over a channel.
      */
-    PacketDefault = 32768 // 32KB
+    PacketDefault = 32768
 }
