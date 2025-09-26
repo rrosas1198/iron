@@ -1,10 +1,4 @@
-export enum HostKeyHashType {
-    MD5 = 1,
-    SHA1 = 2,
-    SHA256 = 3
-}
-
-export enum HostKeyAlgorithm {
+export enum SSHHostKeyAlgorithm {
     Unknown = 0,
     Rsa = 1,
     Dss = 2, // deprecated

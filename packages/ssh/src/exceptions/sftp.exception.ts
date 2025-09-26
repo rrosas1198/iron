@@ -1,4 +1,4 @@
-import { SFTPStatusCode } from "../enums/sftp.enum.ts";
+import { SFTPStatusCode } from "../enums/sftp-status-code.enum.ts";
 
 export class SFTPException extends Error {
     readonly #_code: SFTPStatusCode;

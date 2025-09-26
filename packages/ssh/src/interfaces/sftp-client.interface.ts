@@ -1,29 +1,6 @@
-export interface SFTPAttributes {
-    size?: bigint;
-    uid?: number;
-    gid?: number;
-    permissions?: number;
-    atime?: number;
-    mtime?: number;
-}
-
-export interface SFTPEntry {
-    name: string;
-    longname?: string;
-    attributes: SFTPAttributes;
-    isDirectory: boolean;
-    isFile: boolean;
-    isSymlink: boolean;
-}
-
-export interface SFTPHandle {
-    read(buffer: Uint8Array): Promise<number>;
-    write(data: Uint8Array): Promise<number>;
-    close(): Promise<void>;
-    seek(offset: bigint): void;
-    tell(): bigint;
-    stat(): Promise<SFTPAttributes>;
-}
+import type { SFTPAttributes } from "./sftp-attributes.interface.ts";
+import type { SFTPEntry } from "./sftp-entry.interface.ts";
+import type { SFTPHandle } from "./sftp-handle.interface.ts";
 
 export interface SFTPClient {
     open(filename: string, flags?: number, mode?: number): Promise<SFTPHandle>;

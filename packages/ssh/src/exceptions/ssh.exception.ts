@@ -1,4 +1,4 @@
-import { SSHErrorCode } from "../enums/error-code.enum.ts";
+import { SSHErrorCode } from "../enums/ssh-error-code.enum.ts";
 
 export class SSHException extends Error {
     readonly #_code: SSHErrorCode;

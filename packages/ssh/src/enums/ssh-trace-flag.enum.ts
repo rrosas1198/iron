@@ -1,4 +1,4 @@
-export enum TraceFlag {
+export enum SSHTraceFlag {
     Transport = 1 << 1,
     KeyExchange = 1 << 2,
     Authentication = 1 << 3,
