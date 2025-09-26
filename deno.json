@@ -1,0 +1,22 @@
+{
+    "exclude": [".git"],
+    "unstable": ["ffi"],
+    "workspace": [
+        "./packages/*"
+    ],
+    "compilerOptions": {
+        "strict": true,
+        "noImplicitOverride": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "useUnknownInCatchVariables": true
+    },
+    "fmt": {
+        "indentWidth": 4
+    },
+    "lint": {
+        "rules": {
+            "tags": ["recommended", "jsr"]
+        }
+    }
+}

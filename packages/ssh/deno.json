@@ -1,0 +1,11 @@
+{
+    "name": "@iron/ssh",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Native SSH client",
+    "exports": "./src/mod.ts",
+    "repository": "https://github.com/rrosas1198/forge",
+    "compilerOptions": {
+        "lib": ["deno.unstable"]
+    }
+}
