@@ -12,7 +12,8 @@
         "useUnknownInCatchVariables": true
     },
     "fmt": {
-        "indentWidth": 4
+        "indentWidth": 4,
+        "trailingCommas": "never"
     },
     "lint": {
         "rules": {

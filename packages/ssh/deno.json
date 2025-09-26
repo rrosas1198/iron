@@ -4,7 +4,7 @@
     "license": "MIT",
     "description": "Native SSH client",
     "exports": "./src/mod.ts",
-    "repository": "https://github.com/rrosas1198/forge",
+    "repository": "https://github.com/rrosas1198/iron",
     "compilerOptions": {
         "lib": ["deno.unstable"]
     }
