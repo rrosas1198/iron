@@ -547,4 +547,46 @@ const LIBSSH2_FFI_SYMBOLS = {
     }
 } as const;
 
-export const libssh2 = Deno.dlopen("", LIBSSH2_FFI_SYMBOLS);
+function _findLibraryPath(): string {
+    const extension = _inferLibraryExtension();
+    const platform = `${Deno.build.os}-${Deno.build.arch}`;
+    return `${import.meta.resolve(`../lib/${platform}/libssh2.${extension}`)}`;
+}
+
+function _inferLibraryExtension(): string {
+    const { os } = Deno.build;
+
+    switch (os) {
+        case "windows":
+            return "dll";
+        case "darwin":
+            return "dylib";
+        default:
+            return "so";
+    }
+}
+
+const libraryPath = _findLibraryPath();
+export const libssh2 = Deno.dlopen(libraryPath, LIBSSH2_FFI_SYMBOLS);
+
+const initResult = libssh2.symbols.libssh2_init(0);
+
+if (initResult !== 0) {
+    throw new Error(`Failed to initialize libssh2: ${initResult}`);
+}
+
+try {
+    Deno.addSignalListener("SIGINT", () => {
+        libssh2.symbols.libssh2_exit();
+        libssh2.close();
+        Deno.exit(0);
+    });
+
+    Deno.addSignalListener("SIGTERM", () => {
+        libssh2.symbols.libssh2_exit();
+        libssh2.close();
+        Deno.exit(0);
+    });
+} catch {
+    // Do nothing
+}
